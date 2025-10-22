@@ -230,6 +230,7 @@ void quicksort(void *buffer, long count, size_t size, int (*compare)(const void 
     qsortRecursive((char *)buffer, size, compare, 0, count - 1);
 }
 
+
 // -------------------------- Separar linhas do arquivo e salvar nos .dat referentes -----------------
 int parseCSVLine(char *line, ORDER *order)
 {
@@ -774,7 +775,6 @@ CATEGORY *searchCategoryById(FILE *categoryRegister, FILE *categoryIndex,
 int updateCategorySales(FILE *categoryRegister, FILE *categoryIndex,
                         long long int category_id, int quantity, float revenue, int indexGap)
 {
-
     CATEGORY *cat = searchCategoryById(categoryRegister, categoryIndex, category_id, indexGap);
 
     if (!cat)
@@ -808,7 +808,8 @@ int updateCategorySales(FILE *categoryRegister, FILE *categoryIndex,
     return 0;
 }
 
-// RESPONDE: Qual a categoria com mais itens vendidos?
+
+// RESPONDE: Qual a categoria com mais itens vendidos?-------------------------------------------------
 void findBestSellingCategory(FILE *categoryRegister)
 {
     fseek(categoryRegister, 0, SEEK_END);
@@ -1094,7 +1095,8 @@ JEWELRY *searchJewelryById(FILE *jewelryRegister, FILE *jewelryIndex,
     return NULL;
 }
 
-// PERGUNTA: Qual a joia mais vendida?
+
+// PERGUNTA: Qual a joia mais vendida? ----------------------------------------------------------------
 unsigned long hash(long long int product_id)
 {
     return product_id % HASH_SIZE;
@@ -1206,6 +1208,7 @@ void contMostSoldJewel(FILE *orderHistory, FILE *jewelryRegister, FILE *jewelryI
 
     free(sales);
 }
+
 
 // ----------------------------- Reconstruir Index ----------------------------------
 int rebuildOrderIndex(FILE *orderHistory, FILE *orderIndex, int indexGap)
@@ -1657,24 +1660,28 @@ void listOverflowRecords(FILE *orderOverflow)
     printf("Total ativos: %d\n\n", count);
 }
 
-// RESPONDE: Qual o mês com mais vendas
-int parseYearMonth(const char* date_str, int* year, int* month) {
-    if (strlen(date_str) < 7) return 0;
-    
+
+// RESPONDE: Qual o mês com mais vendas -------------------------------------------------
+int parseYearMonth(const char *date_str, int *year, int *month)
+{
+    if (strlen(date_str) < 7)
+        return 0;
+
     char year_str[5] = {0};
     strncpy(year_str, date_str, 4);
     *year = atoi(year_str);
-    
+
     char month_str[3] = {0};
 
-    month_str[0] = date_str[5]; 
+    month_str[0] = date_str[5];
     month_str[1] = date_str[6];
     *month = atoi(month_str);
-    
-    if (*year < 2018 || *year > 2025 || *month < 1 || *month > 12) {
+
+    if (*year < 2018 || *year > 2025 || *month < 1 || *month > 12)
+    {
         return 0;
     }
-    
+
     return 1;
 }
 
@@ -1737,7 +1744,7 @@ void findBestMonth(FILE *orderHistory)
     }
 
     printf("\n========================================\n");
-    printf("     RESPOSTA: MES MAIS VENDIDO\n");
+    printf(" RESPOSTA: MES MAIS VENDIDO\n");
     printf("========================================\n");
 
     if (month_orders[best_month_index] == 0)
@@ -1747,14 +1754,15 @@ void findBestMonth(FILE *orderHistory)
     }
 
     printf("O mes em que mais se vende joias e:\n\n");
-    printf("   >>> %s <<<\n\n", getMonthName(best_month_index + 1));
+    printf(" >>> %s <<<\n\n", getMonthName(best_month_index + 1));
 
     printf("Estatisticas Agregadas:\n");
-    printf("Total de Pedidos:   %d\n", month_orders[best_month_index]);
-    printf("Unidades Vendidas:  %d\n", month_qty[best_month_index]);
-    printf("Receita Total:      $%.2f\n", month_revenue[best_month_index]);
+    printf("Total de Pedidos: %d\n", month_orders[best_month_index]);
+    printf("Unidades Vendidas: %d\n", month_qty[best_month_index]);
+    printf("Receita Total: $%.2f\n", month_revenue[best_month_index]);
     printf("========================================\n\n");
 }
+
 
 int main()
 {
@@ -1886,20 +1894,20 @@ int main()
         }
 
         case 6: // Reconstruir indices
-            rebuildAllIndices(orderHistory,orderIndex,categoryRegister, categoryIndex, indexGap);
-            
+            rebuildAllIndices(orderHistory, orderIndex, categoryRegister, categoryIndex, indexGap);
+
             break;
 
-        case 7: //Estatisticas
+        case 7: // Estatisticas
             showFileStats(orderHistory, orderOverflow);
-            
+
             break;
 
         case 8: // Produto mais vendido
             contMostSoldJewel(orderHistory, jewelryRegister, jewelryIndex, indexGap);
             break;
 
-        case 9: //Mes com mais vendas
+        case 9: // Mes com mais vendas
             findBestMonth(orderHistory);
             break;
 
