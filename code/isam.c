@@ -1691,8 +1691,6 @@ const char *getMonthName(int month)
 
 void findBestMonth(FILE *orderHistory)
 {
-    printf("\n=== MES COM MAIS VENDAS (AGREGADO) ===\n");
-
     fseek(orderHistory, 0, SEEK_END);
     long totalOrders = ftell(orderHistory) / sizeof(ORDER);
 
@@ -1708,8 +1706,6 @@ void findBestMonth(FILE *orderHistory)
 
     ORDER order;
     fseek(orderHistory, 0, SEEK_SET);
-
-    printf("Analisando %ld pedidos...\n", totalOrders);
 
     for (long i = 0; i < totalOrders; i++)
     {
@@ -1764,11 +1760,11 @@ int main()
 {
     FILE *csv = openFile("../data/jewelry.csv", "r");
     FILE *orderHistory = openFile("../data/orderHistory.dat", "wb+");
-    FILE *orderIndex = openFile("../data/orderIndex.dat", "wb+");
+    FILE *orderIndex = openFile("../data/orderIndex.idx", "wb+");
     FILE *jewelryRegister = openFile("../data/jewelryRegister.dat", "wb+");
-    FILE *jewelryIndex = openFile("../data/jewelryIndex.dat", "wb+");
+    FILE *jewelryIndex = openFile("../data/jewelryIndex.idx", "wb+");
     FILE *categoryRegister = openFile("../data/categoryRegister.dat", "wb+");
-    FILE *categoryIndex = openFile("../data/categoryIndex.dat", "wb+");
+    FILE *categoryIndex = openFile("../data/categoryIndex.idx", "wb+");
     FILE *orderOverflow = openFile("../data/orderOverflow.dat", "wb+");
 
     int indexGap = 1000;

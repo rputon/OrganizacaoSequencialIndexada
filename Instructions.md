@@ -23,8 +23,7 @@ Criação de arquivos de dados e de arquivos de índice parcial para uma **organ
 
 Arquivos de dados ou  datasets são arquivos definidos e estruturados como  **parte de uma organização de arquivos** que serão utilizados para consultas ou para alteração do conjunto de dados. Grandes volumes de dados são gerados a cada dia, e esses dados são de alguma forma guardados em arquivos, muitas vezes arquivos com grandes volumes de dados.
 
-Conhecendo como um arquivo está organizado internamente, pode-se desenvolver programas ou 
-procedimentos   para   consultar   algum   tipo   de   informação.   Cada   consulta  é  realizada   para responder a uma pergunta específica:
+Conhecendo como um arquivo está organizado internamente, pode-se desenvolver programas ou procedimentos   para   consultar   algum   tipo   de   informação.   Cada   consulta  é  realizada   para responder a uma pergunta específica:
 
 #### Exemplo
 > “Qual é a joia mais vendida em um site de uma loja online de joias de médio porte?”
@@ -117,7 +116,7 @@ Eles devem ser salvos em disco e carregados automaticamente ao abrir o programa.
 ---
 ### 2.2 Índices em Arquivo
 
-* Implemente **um arquivo de índice parcial** para o campo **chav**e** de cada arquivo de dados de acordo com a descrição do índice de arquivo da organização sequencial-indexado;
+* Implemente **um arquivo de índice parcial** para o campo **chave** de cada arquivo de dados de acordo com a descrição do índice de arquivo da organização sequencial-indexado;
 
 * **Implemente uma função de consulta a partir deste índice** usando a **pesquisa binária** para pesquisar no arquivo de índice e, depois o comando seek para pesquisar no arquivo de dados
 
