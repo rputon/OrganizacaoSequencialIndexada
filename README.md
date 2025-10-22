@@ -1,7 +1,6 @@
 # Algoritmos e Estruturas de Dados II  
 ## Trabalho I — Arquivos de Dados com Índices Parciais
 
----
 ### Contexto e definição do problema
 Arquivos de dados ou  datasets são arquivos definidos e estruturados como  **parte de uma organização de arquivos** que serão utilizados para consultas ou para alteração do conjunto de dados. Grandes volumes de dados são gerados a cada dia, e esses dados são de alguma forma guardados em arquivos, muitas vezes arquivos com grandes volumes de dados.
 
