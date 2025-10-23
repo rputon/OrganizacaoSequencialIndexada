@@ -1790,11 +1790,11 @@ int main()
     fclose(orderOverflow);
 
     orderHistory = openFile("../data/orderHistory.dat", "rb+");
-    orderIndex = openFile("../data/orderIndex.dat", "rb+");
+    orderIndex = openFile("../data/orderIndex.idx", "rb+");
     jewelryRegister = openFile("../data/jewelryRegister.dat", "rb+");
-    jewelryIndex = openFile("../data/jewelryIndex.dat", "rb+");
+    jewelryIndex = openFile("../data/jewelryIndex.idx", "rb+");
     categoryRegister = openFile("../data/categoryRegister.dat", "rb+");
-    categoryIndex = openFile("../data/categoryIndex.dat", "rb+");
+    categoryIndex = openFile("../data/categoryIndex.idx", "rb+");
     orderOverflow = openFile("../data/orderOverflow.dat", "rb+");
 
     int opcao = -1;
@@ -1812,13 +1812,12 @@ int main()
         printf("9 - Mes com mais vendas\n");
         printf("10 - Categoria mais vendida\n");
         printf("0 - Sair\n");
-        printf("==========================\n");
+        printf("======================== ==\n");
         printf("Opcao: ");
         scanf("%d", &opcao);
 
         int ch;
-        while ((ch = getchar()) != '\n' && ch != EOF)
-            ;
+        while ((ch = getchar()) != '\n' && ch != EOF);
 
         switch (opcao)
         {
